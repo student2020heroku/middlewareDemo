@@ -5,6 +5,9 @@
   "repository": "https://github.com/Kirillakrill/middlewareDemo.git",
   "author": "Kirillakrill <akrillsm9003@gmail.com>",
   "license": "MIT",
+  "scripts":{
+    "start":"node index.js" 
+  },
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.7"
