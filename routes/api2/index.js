@@ -8,7 +8,12 @@ module.exports = x => {
             r.res.send('Hello!');
         });
         r.res.send('not yaet implemented')
-    }) 
+    });
 
-    return router
+    router
+    .post('/moment', r => {
+        r.res.send('OK');
+    });
+
+    return router;
 };
