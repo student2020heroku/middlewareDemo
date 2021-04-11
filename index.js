@@ -15,7 +15,7 @@ app
   .use(function workingSetter(req, res, next) {req.working = 'Работает, ура!'; next();})
   .use(x.static('.'))
   .use('/', Router)
-  .use('/', ApiRouter(x))
+  .use('/api', ApiRouter(x))
   .get('/first', (req, res, next) => {
     req.app._router.stack.forEach(mw => console.log(mw.name))
     if (req.query.error == 'yes') return next();   
