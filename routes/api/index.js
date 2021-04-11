@@ -6,7 +6,13 @@ module.exports = x => {
 
     router
     .route('/add/:n1/:n2')
-    .get(r => r.res.send('Got:' + Number(r.params.n1) + Number(r.params.n2)))
+    .get(r => {
+        const sum = Number(r.params.n1) + Number(r.params.n2);
+        r.res.format({
+            'text/html': () => r.res.send(`<h2>got: ${sum}</h2>`),
+            'application/json': () => r.res.json({'Got:': sum})
+        });
+    })
     .post(r => r.res.send('Posted:' + Number(r.params.n1) + Number(r.params.n2)));
 
     router

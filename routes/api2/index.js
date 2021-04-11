@@ -1,8 +1,14 @@
 module.exports = x => {
     const router = x.Router();
     router
-    .route('/')
-    .get(r => r.res.send('not yet implemented'))
+    .all('/', r => {
+        router.stack.forEach(rr => console.log(r.route.path));
+        router.all(/hello/, r => {
+            router.stack.forEach(rr => console.log(r.route.path));
+            r.res.send('Hello!');
+        });
+        r.res.send('not yaet implemented')
+    }) 
 
     return router
 };
