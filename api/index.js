@@ -8,5 +8,5 @@ module.exports = x => {
     .route('/add/:n1/:n2')
     .get(r => r.res.send('Got:' + Number(r.params.n1) + Number(r.params.n2)));
 
-    return Router
+    return router
 };
