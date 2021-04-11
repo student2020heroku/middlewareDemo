@@ -1,5 +1,6 @@
 const [{ Server: h1 }, x] = [require('http'), require('express')];
 
+const ApiRouter = require('./api');
 const Router = x.Router();
 const PORT = 4321;
 const { log } = console;
@@ -14,6 +15,7 @@ app
   .use(function workingSetter(req, res, next) {req.working = 'Работает, ура!'; next();})
   .use(x.static('.'))
   .use('/', Router)
+  .use('/', ApiRouter(x))
   .get('/first', (req, res, next) => {
     req.app._router.stack.forEach(mw => console.log(mw.name))
     if (req.query.error == 'yes') return next();   
