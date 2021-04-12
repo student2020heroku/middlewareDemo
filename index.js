@@ -1,7 +1,9 @@
 const [{ Server: h1 }, x] = [require('http'), require('express')];
+const bodyParser = require('body-parser');
 
 const ApiRouter = require('./routes/api');
 const Api2Router = require('./routes/api2');
+
 const Router = x.Router();
 const PORT = 4321;
 const { log } = console;
@@ -15,6 +17,7 @@ app
   .use(mw0)
   .use(function workingSetter(req, res, next) {req.working = 'Работает, ура!'; next();})
   .use(x.static('.'))
+  .use(bodyParser.urlencoded({ extended: true }))
   .use('/', Router)
   .use('/api', ApiRouter(x))
   .use('/api2', Api2Router(x))

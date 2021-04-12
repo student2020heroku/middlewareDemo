@@ -12,7 +12,7 @@ module.exports = x => {
 
     router
     .post('/moment', r => {
-        r.res.send('OK');
+        r.res.send(r.body.name);
     });
 
     return router;
