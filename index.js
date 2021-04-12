@@ -18,6 +18,7 @@ app
   .use(function workingSetter(req, res, next) {req.working = 'Работает, ура!'; next();})
   .use(x.static('.'))
   .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
   .use('/', Router)
   .use('/api', ApiRouter(x))
   .use('/api2', Api2Router(x))
