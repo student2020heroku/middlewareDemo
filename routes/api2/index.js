@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = x => {
     const router = x.Router();
     router
@@ -12,7 +14,8 @@ module.exports = x => {
 
     router
     .post('/moment', r => {
-        r.res.send(r.body.name);
+        const z = moment().format('DD.MM.YYYY HH:mm:ss')
+        r.res.send(`Hello, ${r.body.name}, right now ${z}`);
     });
 
     return router;
